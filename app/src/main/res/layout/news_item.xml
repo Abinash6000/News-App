@@ -20,6 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="4dp"
             android:text="New Covid Strain Detected by Pune Virologists"
             android:textSize="24sp"
             android:textColor="@color/dark_yellow"
@@ -27,6 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="4dp"
             android:text="A new Covid varieant that needs more antibodies to fight it and has more sever symptoms has been found by the National Institute of Virology in Pune"
             android:textSize="16sp"
             android:textColor="@color/white"
