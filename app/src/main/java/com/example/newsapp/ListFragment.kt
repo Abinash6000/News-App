@@ -11,14 +11,6 @@ import com.example.newsapp.adapter.CategoryAdapter
 import com.example.newsapp.adapter.NewsAdapter
 import com.example.newsapp.data.DataSource
 import com.example.newsapp.databinding.FragmentListBinding
-import com.example.newsapp.network.NewsApi
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class ListFragment : Fragment() {
     private val viewModel: NewsViewModel by viewModels()
@@ -31,6 +23,7 @@ class ListFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
         // Category RecyclerView
         val dataSource = DataSource()
@@ -52,7 +45,6 @@ class ListFragment : Fragment() {
             }
         } catch (e: Exception) {
             Log.d("adflljksfd", e.toString())
-
         }
 
         viewModel.getNews()

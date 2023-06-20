@@ -25,12 +25,11 @@ class NewsViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = NewsApiStatus.LOADING
             try {
-                Log.d("adflljksfd", "api called")
                 _news.value = NewsApi.retrofitService.getNewsHeadLines()
-                Log.d("adflljksfd", "Success ${news.value.toString()}")
                 _status.value = NewsApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = NewsApiStatus.ERROR
+                _news.value = News(null, null)
             }
         }
     }
