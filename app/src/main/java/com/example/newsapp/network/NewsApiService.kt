@@ -1,5 +1,6 @@
 package com.example.newsapp.network
 
+import com.example.newsapp.model.News
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -8,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://newsapi.org/v2/"
+private const val BASE_URL = "https://newsapi.org/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -20,13 +21,13 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface NewsApiService {
-    @Headers("country: in", "apiKey: 4fd028e0cf3a410180f97029e7237ae7")
-    @GET("top-headlines")
-    suspend fun getNewsHeadLines(): News
+    @Headers("X-Api-Key: 4fd028e0cf3a410180f97029e7237ae7")
+    @GET("v2/top-headlines")
+    suspend fun getNewsHeadLines(@Query("country") country: String = "in"): News
 
-    @Headers("country: in", "apiKey: 4fd028e0cf3a410180f97029e7237ae7")
-    @GET("top-headlines")
-    suspend fun getNewsByCategory(@Query("category") category: String): News
+    @Headers("X-Api-Key: 4fd028e0cf3a410180f97029e7237ae7")
+    @GET("v2/top-headlines")
+    suspend fun getNewsByCategory(@Query("country") country: String = "in", @Query("category") category: String): News
 }
 
 object NewsApi {
