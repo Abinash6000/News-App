@@ -17,7 +17,7 @@ class NewsAdapter(private val myDataset: List<Article>) : Adapter<NewsAdapter.Ne
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        return NewsViewHolder(NewsItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return NewsViewHolder(NewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun getItemCount() = myDataset.size

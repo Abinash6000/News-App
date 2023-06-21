@@ -14,18 +14,23 @@
         android:layout_margin="2dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@color/cardview_dark_background">
+
             <ImageView
                 android:id="@+id/newsIV"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="300dp"
                 app:imageUrl="@{article.urlToImage}"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
+
             <TextView
                 android:id="@+id/titleTV"
                 android:layout_width="wrap_content"
@@ -34,17 +39,26 @@
                 android:text="New Covid Strain Detected by Pune Virologists"
                 android:textSize="24sp"
                 android:textColor="@color/dark_yellow"
+                app:layout_constraintTop_toBottomOf="@id/newsIV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
+
             <TextView
                 android:id="@+id/descriptionTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:text="A new Covid varieant that needs more antibodies to fight it and has more sever symptoms has been found by the National Institute of Virology in Pune"
+                android:text="A new Covid variant that needs more antibodies to fight it and has more severe symptoms has been found by the National Institute of Virology in Pune"
                 android:textSize="16sp"
                 android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/titleTV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
-        </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.cardview.widget.CardView>
 

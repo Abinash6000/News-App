@@ -36,15 +36,17 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        try {
-            viewModel.news.observe(viewLifecycleOwner) { data ->
-                // News RecyclerView
-                val articles = data.articles
-                val newsAdp = articles?.let { NewsAdapter(it) }
-                binding.newsRV.adapter = newsAdp
+        viewModel.news.observe(viewLifecycleOwner) { data ->
+            // News RecyclerView
+            val articles = data.articles
+            if (articles != null) {
+                for(article in articles) {
+                    if (article.urlToImage==null)
+                        articles.remove(article)
+                }
             }
-        } catch (e: Exception) {
-            Log.d("adflljksfd", e.toString())
+            val newsAdp = articles?.let { NewsAdapter(it) }
+            binding.newsRV.adapter = newsAdp
         }
 
         viewModel.getNews()

@@ -1,12 +1,15 @@
 package com.example.newsapp
 
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.model.News
 import com.example.newsapp.network.NewsApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 enum class NewsApiStatus {
@@ -28,6 +31,7 @@ class NewsViewModel : ViewModel() {
                 _news.value = NewsApi.retrofitService.getNewsHeadLines()
                 _status.value = NewsApiStatus.DONE
             } catch (e: Exception) {
+                Log.d("adfasl",e.toString())
                 _status.value = NewsApiStatus.ERROR
                 _news.value = News(null, null)
             }
