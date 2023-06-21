@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.model.News
 import com.example.newsapp.network.NewsApi
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 enum class NewsApiStatus {
@@ -19,7 +20,7 @@ class NewsViewModel : ViewModel() {
     val status: LiveData<NewsApiStatus> get() = _status
 
     private val _news = MutableLiveData<News>()
-    val news: MutableLiveData<News> get() = _news
+    val news: LiveData<News> get() = _news
 
     fun getNews() {
         viewModelScope.launch {
@@ -27,6 +28,21 @@ class NewsViewModel : ViewModel() {
             try {
                 _news.value = NewsApi.retrofitService.getNewsHeadLines()
                 _status.value = NewsApiStatus.DONE
+            } catch (e: Exception) {
+                Log.d("adfasl",e.toString())
+                _status.value = NewsApiStatus.ERROR
+                _news.value = News(null, null)
+            }
+        }
+    }
+
+    fun getNewsByCategory(category: String) {
+        viewModelScope.launch {
+            _status.value = NewsApiStatus.LOADING
+            try {
+                _news.value = NewsApi.retrofitService.getNewsByCategory(category = category)
+                _status.value = NewsApiStatus.DONE
+//                Log.d("adfasl", _news.value.toString())
             } catch (e: Exception) {
                 Log.d("adfasl",e.toString())
                 _status.value = NewsApiStatus.ERROR

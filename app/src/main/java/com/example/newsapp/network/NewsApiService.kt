@@ -23,11 +23,11 @@ private val retrofit = Retrofit.Builder()
 interface NewsApiService {
     @Headers("X-Api-Key: 4fd028e0cf3a410180f97029e7237ae7")
     @GET("v2/top-headlines")
-    suspend fun getNewsHeadLines(@Query("country") country: String = "us"): News
+    suspend fun getNewsHeadLines(@Query("country") country: String = "in"): News
 
     @Headers("X-Api-Key: 4fd028e0cf3a410180f97029e7237ae7")
     @GET("v2/top-headlines")
-    suspend fun getNewsByCategory(@Query("country") country: String = "us", @Query("category") category: String): News
+    suspend fun getNewsByCategory(@Query("country") country: String = "in", @Query("category") category: String): News
 }
 
 object NewsApi {

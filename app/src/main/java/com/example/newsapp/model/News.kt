@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class News(
     val status: String?,
-    val articles: MutableList<Article>?,
+    val articles: List<Article>?,
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)

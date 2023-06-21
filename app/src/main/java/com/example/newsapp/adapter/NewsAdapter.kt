@@ -1,5 +1,6 @@
 package com.example.newsapp.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -23,6 +24,10 @@ class NewsAdapter(private val myDataset: List<Article>) : Adapter<NewsAdapter.Ne
     override fun getItemCount() = myDataset.size
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
+        val data = myDataset[position]
+        val urlToImage = data.urlToImage
+        if(urlToImage!=null)
         holder.bind(myDataset[position])
+        else Log.d("adfasl", "Url of image was null here")
     }
 }
