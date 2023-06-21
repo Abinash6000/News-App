@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="2dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
-    <ImageView
-        android:id="@+id/catIV"
-        android:layout_width="match_parent"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:background="@drawable/sports"
-        android:scaleType="centerCrop"/>
-    <TextView
-        android:id="@+id/catTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sports"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:layout_gravity="center"/>
+        android:layout_margin="2dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+        <ImageView
+            android:id="@+id/catIV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/sports"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:id="@+id/catTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sports"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:layout_gravity="center"/>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
