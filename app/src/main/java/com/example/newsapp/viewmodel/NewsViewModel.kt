@@ -22,7 +22,11 @@ class NewsViewModel : ViewModel() {
     private val _news = MutableLiveData<News>()
     val news: LiveData<News> get() = _news
 
-    fun getNews() {
+    init {
+        getNews()
+    }
+
+    private fun getNews() {
         viewModelScope.launch {
             _status.value = NewsApiStatus.LOADING
             try {

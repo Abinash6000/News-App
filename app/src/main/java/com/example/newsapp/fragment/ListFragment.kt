@@ -56,9 +56,6 @@ class ListFragment : Fragment(), MyCategoryItemClickListener {
                 binding.newsRV.adapter = newsAdp
             }
         }
-
-        viewModel.getNews()
-
     }
 
     override fun onDestroyView() {
