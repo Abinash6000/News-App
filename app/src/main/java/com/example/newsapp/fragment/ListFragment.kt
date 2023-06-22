@@ -75,6 +75,7 @@ class ListFragment : Fragment(), MyCategoryItemClickListener, MyNewsItemClickLis
     override fun onNewsItemClicked(article: Article) {
         // navigate to detailFragment
         // pass the article to detailFragment
-        findNavController().navigate(R.id.action_listFragment_to_detailFragment)
+        val action = ListFragmentDirections.actionListFragmentToDetailFragment(article)
+        findNavController().navigate(action)
     }
 }

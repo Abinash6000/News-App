@@ -28,11 +28,11 @@ class NewsAdapter(private val myDataset: List<Article>, private val listener: My
     override fun getItemCount() = myDataset.size
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val data = myDataset[position]
-        val urlToImage = data.urlToImage
-        if(urlToImage!=null)
+//        val data = myDataset[position]
+//        val urlToImage = data.urlToImage
+//        if(urlToImage!=null)
         holder.bind(myDataset[position], listener)
-        else Log.d("adfasl", "Url of image was null here")
+//        else Log.d("adfasl", "Url of image was null here")
     }
 }
 

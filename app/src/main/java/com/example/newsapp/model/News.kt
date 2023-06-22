@@ -8,11 +8,4 @@ data class News(
     val articles: List<Article>?,
 )
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-data class Article(
-    val title: String?,
-    val description: String?,
-    val url: String?,
-    val urlToImage: String?,
-    val content: String?
-)
+
