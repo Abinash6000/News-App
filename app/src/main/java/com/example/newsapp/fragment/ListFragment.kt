@@ -7,16 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.newsapp.R
 import com.example.newsapp.viewmodel.NewsViewModel
 import com.example.newsapp.adapter.CategoryAdapter
 import com.example.newsapp.adapter.MyCategoryItemClickListener
+import com.example.newsapp.adapter.MyNewsItemClickListener
 import com.example.newsapp.adapter.NewsAdapter
 import com.example.newsapp.data.DataSource
 import com.example.newsapp.databinding.FragmentListBinding
 import com.example.newsapp.model.Article
 import java.util.Locale
 
-class ListFragment : Fragment(), MyCategoryItemClickListener {
+class ListFragment : Fragment(), MyCategoryItemClickListener, MyNewsItemClickListener {
     private val viewModel: NewsViewModel by viewModels()
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
@@ -52,7 +55,7 @@ class ListFragment : Fragment(), MyCategoryItemClickListener {
 //                    if (article.urlToImage==null)
 //                        articles.remove(article)
 //                }
-                val newsAdp = NewsAdapter(data.articles)
+                val newsAdp = NewsAdapter(data.articles, this)
                 binding.newsRV.adapter = newsAdp
             }
         }
@@ -67,5 +70,11 @@ class ListFragment : Fragment(), MyCategoryItemClickListener {
         Log.d("adfasl", "$category ${category.lowercase()}")
         viewModel.getNewsByCategory(category.lowercase())
 //        pass the new data to the adapter again but you shouldn't need to because you are observing it
+    }
+
+    override fun onNewsItemClicked(article: Article) {
+        // navigate to detailFragment
+        // pass the article to detailFragment
+        findNavController().navigate(R.id.action_listFragment_to_detailFragment)
     }
 }
