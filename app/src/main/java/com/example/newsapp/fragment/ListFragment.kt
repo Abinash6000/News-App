@@ -50,7 +50,7 @@ class ListFragment : Fragment(), MyCategoryItemClickListener, MyNewsItemClickLis
 //                The error is while iterating through the data.articles
 
 //                val articles = mutableListOf<Article>()
-//                articles.addAll(data.articles) // error right here
+//                articles.addAll(data.articles) // error right here                // maybe the error was that i was using the same objects of articles which were stored in mutableLiveData and trying to add them to a new list variable
 //                for(article in articles) {  // and here
 //                    if (article.urlToImage==null)
 //                        articles.remove(article)
